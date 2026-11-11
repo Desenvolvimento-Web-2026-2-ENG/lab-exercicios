@@ -1,195 +1,30 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Formulário semântico e acessível para envio de arquivos de suporte técnico.">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <meta name="keywords" content="HTML, Formulários, Acessibilidade, Suporte">
-    <meta name="robots" content="index, follow">   
-    <meta name="author" content="Ronaldo Amaral"> 
-    <title>Suporte Técnico — Abertura de Chamado</title>
-    <style>
-        /* Variáveis para facilitar manutenção de cores */
-        :root {
-            --bg-body: #0f172a;
-            --bg-form: #1e293b;
-            --bg-input: #090d16;
-            --text-main: #f8fafc;
-            --text-hint: #94a3b8;
-            --border-color: #475569;
-            --primary: #38bdf8;
-            --primary-dark: #0284c7;
-        }
-
-        body { 
-            font-family: system-ui, -apple-system, sans-serif; 
-            background: var(--bg-body); 
-            color: var(--text-main); 
-            padding: 2rem; 
-            line-height: 1.5;
-        }
-
-        main {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        form { 
-            background: var(--bg-form); 
-            padding: 1.5rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        fieldset { 
-            border: 1px solid var(--border-color); 
-            border-radius: 6px; 
-            padding: 1.5rem 1rem; 
-        }
-
-        legend { 
-            color: var(--primary); 
-            font-weight: 700; 
-            padding: 0 0.5rem; 
-        }
-
-        .group { 
-            display: flex; 
-            flex-direction: column; 
-            margin-bottom: 1.25rem; 
-        }
-
-        label { 
-            margin-bottom: 0.5rem; 
-            font-size: 0.95rem; 
-            font-weight: 500;
-        }
-
-        input, select { 
-            background: var(--bg-input); 
-            border: 1px solid var(--border-color); 
-            color: var(--text-main); 
-            padding: 0.75rem; 
-            border-radius: 4px; 
-            font-size: 1rem;
-        }
-
-        /* Foco acessível para navegação por teclado */
-        input:focus-visible, select:focus-visible, button:focus-visible { 
-            outline: 2px solid var(--primary); 
-            outline-offset: 2px;
-            border-color: var(--primary);
-        }
-
-        /* Remove o outline padrão se focus-visible for suportado */
-        input:focus:not(:focus-visible), select:focus:not(:focus-visible) {
-            outline: none;
-        }
-
-        .hint { 
-            color: var(--text-hint); 
-            font-size: 0.85rem; 
-            margin-top: 0.4rem; 
-        }
-
-        button { 
-            background: var(--primary); 
-            color: #000; 
-            font-weight: 700; 
-            font-size: 1rem;
-            border: none; 
-            padding: 0.75rem 1.5rem; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            width: 100%;
-            transition: background-color 0.2s ease;
-            margin-top: 0.5rem;
-        }
-
-        button:hover {
-            background-color: var(--primary-dark);
-            color: #fff;
-        }
-
-        /* Classe para leitores de tela (oculta visualmente) */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
-        /* Estilo sutil para o asterisco visual */
-        .req-star {
-            color: var(--primary);
-        }
-    </style>
-</head>
-<body>
+<!-- CÓDIGO LEGADO: Estrutura sem semântica, sem acessibilidade e sem envio de arquivo -->
+<div class="box-suporte">
+    <div class="titulo">Abrir Chamado Técnico</div>
     
-    <main>
-        <h1>Central de Suporte</h1>
-        <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data" novalidate>
-            <fieldset>
-                <legend>Abrir Chamado Técnico</legend>
+    <div class="campo">
+        <span>Nome Completo:</span>
+        <input type="text" name="nome">
+    </div>
 
-                <div class="group">
-                    <label for="nome-usuario">
-                        Nome Completo: 
-                        <span class="req-star" aria-hidden="true" title="Campo obrigatório">*</span>
-                        <span class="sr-only">Campo obrigatório</span>
-                    </label>
-                    <input type="text" id="nome-usuario" name="nome" required minlength="3" autocomplete="name">
-                </div>
+    <div class="campo">
+        <span>E-mail de Contato:</span>
+        <input type="text" name="email">
+    </div>
 
-                <div class="group">
-                    <label for="email-usuario">
-                        E-mail de Contato: 
-                        <span class="req-star" aria-hidden="true" title="Campo obrigatório">*</span>
-                        <span class="sr-only">Campo obrigatório</span>
-                    </label>
-                    <input type="email" id="email-usuario" name="email" placeholder="nome@empresa.com" required autocomplete="email">
-                </div>
+    <div class="campo">
+        <span>Prioridade:</span>
+        <select name="prioridade">
+            <option>Baixa</option>
+            <option>Média</option>
+            <option>Alta</option>
+        </select>
+    </div>
 
-                <div class="group">
-                    <label for="prioridade-chamado">
-                        Nível de Prioridade: 
-                        <span class="req-star" aria-hidden="true" title="Campo obrigatório">*</span>
-                        <span class="sr-only">Campo obrigatório</span>
-                    </label>
-                    <select id="prioridade-chamado" name="prioridade" required>
-                        <option value="">-- Selecione a prioridade --</option>
-                        <option value="baixa">Baixa</option>
-                        <option value="media">Média</option>
-                        <option value="alta">Alta</option>
-                    </select>
-                </div>
+    <div class="campo">
+        <span>Arquivo de Log ou Print (PNG/PDF):</span>
+        <input type="file" name="anexo">
+    </div>
 
-                <div class="group">
-                    <label for="anexo-log">
-                        Arquivo de Log ou Print (PNG ou PDF): 
-                        <span class="req-star" aria-hidden="true" title="Campo obrigatório">*</span>
-                        <span class="sr-only">Campo obrigatório</span>
-                    </label>
-                    <input type="file" id="anexo-log" name="anexo" accept="image/png,application/pdf" required aria-describedby="anexo-help">
-                    <span id="anexo-help" class="hint">Apenas arquivos do tipo .png ou .pdf são permitidos.</span>
-                </div>
-
-                <button type="submit">Enviar Chamado</button>
-            </fieldset>
-        </form>
-    </main>
-
-</body>
-</html>
+    <div class="botao" onclick="alert('Enviado')">Enviar Chamado</div>
+</div>
